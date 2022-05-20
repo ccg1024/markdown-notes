@@ -426,6 +426,9 @@ $ git push -u origin main
 # 查看本地与远程的差别
 $ git fetch origin
 $ git status
+
+# 查看远程连接地址
+$ git remote -v
 ```
 
 ## python
