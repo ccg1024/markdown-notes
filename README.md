@@ -73,6 +73,10 @@ the google font: `Source code pro` is not a patched font, in this macbook, there
 
 ### 笔记
 
+其他插件：显示当前打开多少个buffer的插件：`bufferline.nvim`。在Arch中，可以使用lunarvim这个版本，比较像IDE。
+
+模糊搜索的插件：`telescope.nvim`。网上看到的，启动界面显示NEOVIM样式的插件：`alpha-nvim`，类似vim-startify。
+
 #### 寄存器（registers）
 
 vim中一些临时存放复制内容的地方。存在多个不同类型的寄存器。
