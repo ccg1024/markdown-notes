@@ -141,7 +141,9 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 
 > 添加国内源后，要先安装`archlinuxcn-keyring`导入GPG key才能安装国内源的软件，不然会显示证书不信任还是不匹配问题。
 
-> 修改镜像与源后需要先使用`pacman -Syy`同步内容
+> ~~修改镜像与源后需要先使用`pacman -Syy`同步内容~~
+
+> **[!/2022/5/24]** `Syy`是强制更新软件源，根据网上说法，通常不建议强制更新。正常更新系统为：`sudo pacman -Syu`。暂时的策略为，非必要情况下不连续使用两个相同的字母，如yy，cc等。
 
 
 ### 下载并安装内核
