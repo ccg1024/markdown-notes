@@ -89,7 +89,7 @@ vim中一些临时存放复制内容的地方。存在多个不同类型的寄�
 5. Three read-only registers ":, "., "%
 6. Alternate buffer register "#
 7. The expression register "=
-8. The selection and drop registers "*, "+ and "~ 
+8. The selection and drop registers "*, "+ and "~
 9. The black hole register "_
 10. Last search pattern register "/
 ```
@@ -148,7 +148,7 @@ let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline#extensions#tabline#formatter='default'
 let g:airline_theme='gruvbox'
 
-:set guifont=DejaVu_Sans_Mono_for_Powerline:h15 " 这是将字体设置成特殊字体 
+:set guifont=DejaVu_Sans_Mono_for_Powerline:h15 " 这是将字体设置成特殊字体
 ```
 
 ### vim-airline-theme
