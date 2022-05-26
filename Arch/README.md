@@ -430,3 +430,17 @@ $ tar -zxvf test.tar.gz
 #### 进程
 
 通过`ps aux`显示当前终端下所有进程信息。
+
+#### 键盘映射
+
+通过`xmodmap`来修改映射。编辑文件`~/.Xmodmap`，下面例子为交换`~`与`esc`，`capsLock`变成`ctrl_l`，`shift+Caps`映射为`capsLock`
+
+```
+clear lock
+clear control
+add control = Caps_Lock Control_L Control_R
+keycode 66 = Control_L Caps_Lock NoSymbol NoSymbol
+keysym Escape = grave asciitilde grave asciitilde
+keysym grave asciitilde grave asciitilde = Escape
+```
+
