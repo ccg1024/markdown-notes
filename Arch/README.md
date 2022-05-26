@@ -424,3 +424,9 @@ $ tar -zxvf test.tar.gz
 下载了`Downloads/sub-web`文件，一个前端页面，将订阅生成配置，通过`yarn serve`开启。`Downloads/subconverter`对应前面前端的后端，运行里面的命令即可。安装了`clash`包，配置文件在`~/.config/clash/config.yaml`，通过前两个将订阅地址生成配置文件。同样下载了一个图形界面的clash，在`Downloads/'Clash for Windows-xxxx'`
 
 但是依旧无法连接google.
+
+### Linux
+
+#### 进程
+
+通过`ps aux`显示当前终端下所有进程信息。
