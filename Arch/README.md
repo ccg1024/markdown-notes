@@ -412,3 +412,15 @@ export QT_IM_MODULE="fcitx5"
 > 大部分需要一直运行的软件都可以在`~/.xinitrc`中启动，注：需要在执行窗口管理软件前启动。
 
 
+### 解压
+
+```bash
+# test.tar.gz
+$ tar -zxvf test.tar.gz
+```
+
+### Clash
+
+下载了`Downloads/sub-web`文件，一个前端页面，将订阅生成配置，通过`yarn serve`开启。`Downloads/subconverter`对应前面前端的后端，运行里面的命令即可。安装了`clash`包，配置文件在`~/.config/clash/config.yaml`，通过前两个将订阅地址生成配置文件。同样下载了一个图形界面的clash，在`Downloads/'Clash for Windows-xxxx'`
+
+但是依旧无法连接google.
