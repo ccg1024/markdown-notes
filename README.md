@@ -115,6 +115,12 @@ vim中一些临时存放复制内容的地方。存在多个不同类型的寄�
 :term python3 test.py
 ```
 
+关闭打开终端的buffer将终止正在终端中执行的命令。
+
+#### vimscript
+
+**字符串**：不同与一般的编程语言对加号有重载方法，vimscript中加号只对数值起作用，连接字符串是通过`.`来实现的，例如：`"hello" . "word"`得到的结果为`helloword`。
+
 ### vim-plug
 
 ```vim
