@@ -216,6 +216,74 @@ autocmd User EasyMotionPromptEnd silent! CocEnable
 
 - 从tag变走：`<q>hello</q>`, use `cst'`, to `'hello'`
 
+### coc-nvim
+
+一款代码提示插件平台。
+
+#### coc-java
+
+直间通过`:CocInstall coc-java` 安装即可，但该插件可能会出现一个 **highlight** 问题的报错。需要修改一下插件平台的一个函数。找到插件安装位置。MacBook自定的位置为 `~/.vim/plugged/` 下。
+
+```vim
+" 修改文件：coc.nvim/autoload/coc/highlight.vim
+" 第 628 行左右，原本内容为
+function! s:prop_type_hlgroup(type) abort
+  return prop_type_get(a:type)['highlight']
+endfunction
+
+" 修改成如下
+function! s:prop_type_hlgroup(type) abort
+"  return prop_type_get(a:type)['highlight']
+  if a:type=~# '^CocHighlight'
+    return strpart(a:type, 12)
+  endif
+  return get(prop_type_get(a:type), 'highlight', '')
+endfunction
+```
+
+该问题在 coc-nvim 上的 [issues](https://github.com/neoclide/coc.nvim/commit/03a532b544930d6957493933089135d5fa3e7be6)。
+
+#### coc-pyright
+
+通过 `:CocInstall coc-pyright` 安装，同时 python 环境需要安装好 pylint。对于 python 或 pycharm 创建的虚拟环境，只要 vim 编辑器的当前工作目录是在项目的根目录，插件会自动使用虚拟环境的解释器。但是 conda 安装的虚拟环境可能不会（也许是因为自己创建的 conda 虚拟环境名称是 work，而不是一般的 env，venv等）。这时就需要在项目的根目录下创建一个 `pyrightconfig.json` 文件，在里面添加：
+
+```json
+{
+    "venvPath": ".", // 因为 vim 的工作目录会放到项目根目录，所以虚拟环境路径为当前路径
+    "venv": "虚拟环境名称（目录名称）"
+}
+```
+
+在 coc-setting.json 中可已设置 coc.nvim 平台下插件的默认设置。对于安装了多个版本的 python，可能需要修改默认的 python 解释器。
+
+```json
+// 通过 :CocConfig 命令调出 coc-setting.json 文件
+{
+    "python.pythonPath": "python解释器路径"  // macbook 下默认为 /usr/bin/python，是python2版本
+}
+```
+
+#### pylint
+
+在使用某些三方库时，可能会提示该库的对象不存在正确的方法名，是因为这些库是用C写的扩展，pylint 无法识别内部。也有人说是 pylint 默认值只信任 C 扩展，而报错的三方库不是 C 扩展。需要在项目的根目录创建 pylint 的局部配置文件，并添加白名单。
+
+```shell
+$ pylint --generate-rcfile > .pylintrc
+// 在文件 .pylintrc 中添加如下
+extension-pkg-whitelist=三方库名
+例如：
+extension-pkg-whitelist=lxml
+```
+
+**关于 pyright 会一直提示一些不是错误的错误，在 `CocConfig` 中加入配置：`python.analysis.typeCheckingMode: off`**
+
+关于代码里面写 TODO 注释会出现提示信息，是因为本地的 LSP 等插件是不建议出现 TODO 注释的。直接使用注释就要可以，一般就公共工程需要使用 TODO 注释，用来提示短时间内补全功能。
+
+### nvim-web-devicons
+
+网上推荐的图标插件通常为`vim-devicons`，但该插件默认是没有颜色的。`nvim-web-devicons`是该项目的fork，添加了颜色。
+
+
 ### 常用命令
 
 - `:edit filename`来打开或创建一个文件；
@@ -282,68 +350,7 @@ autocmd User EasyMotionPromptEnd silent! CocEnable
 
 - 直接使用`bdelete`将直接关闭光标所在的buffer。对于运行python等程序的临时窗口最好这样关闭窗口，避免使用`[b`这样的命令时跑到这些临时窗口中。
 
-### coc-nvim
-
-一款代码提示插件平台。
-
-#### coc-java
-
-直间通过`:CocInstall coc-java` 安装即可，但该插件可能会出现一个 **highlight** 问题的报错。需要修改一下插件平台的一个函数。找到插件安装位置。MacBook自定的位置为 `~/.vim/plugged/` 下。
-
-```vim
-" 修改文件：coc.nvim/autoload/coc/highlight.vim
-" 第 628 行左右，原本内容为
-function! s:prop_type_hlgroup(type) abort
-  return prop_type_get(a:type)['highlight']
-endfunction
-
-" 修改成如下
-function! s:prop_type_hlgroup(type) abort
-"  return prop_type_get(a:type)['highlight']
-  if a:type=~# '^CocHighlight'
-    return strpart(a:type, 12)
-  endif
-  return get(prop_type_get(a:type), 'highlight', '')
-endfunction
-```
-
-该问题在 coc-nvim 上的 [issues](https://github.com/neoclide/coc.nvim/commit/03a532b544930d6957493933089135d5fa3e7be6)。
-
-#### coc-pyright
-
-通过 `:CocInstall coc-pyright` 安装，同时 python 环境需要安装好 pylint。对于 python 或 pycharm 创建的虚拟环境，只要 vim 编辑器的当前工作目录是在项目的根目录，插件会自动使用虚拟环境的解释器。但是 conda 安装的虚拟环境可能不会（也许是因为自己创建的 conda 虚拟环境名称是 work，而不是一般的 env，venv等）。这时就需要在项目的根目录下创建一个 `pyrightconfig.json` 文件，在里面添加：
-
-```json
-{
-    "venvPath": ".", // 因为 vim 的工作目录会放到项目根目录，所以虚拟环境路径为当前路径
-    "venv": "虚拟环境名称（目录名称）"
-}
-```
-
-在 coc-setting.json 中可已设置 coc.nvim 平台下插件的默认设置。对于安装了多个版本的 python，可能需要修改默认的 python 解释器。
-
-```json
-// 通过 :CocConfig 命令调出 coc-setting.json 文件
-{
-    "python.pythonPath": "python解释器路径"  // macbook 下默认为 /usr/bin/python，是python2版本
-}
-```
-
-#### pylint
-
-在使用某些三方库时，可能会提示该库的对象不存在正确的方法名，是因为这些库是用C写的扩展，pylint 无法识别内部。也有人说是 pylint 默认值只信任 C 扩展，而报错的三方库不是 C 扩展。需要在项目的根目录创建 pylint 的局部配置文件，并添加白名单。
-
-```shell
-$ pylint --generate-rcfile > .pylintrc
-// 在文件 .pylintrc 中添加如下
-extension-pkg-whitelist=三方库名
-例如：
-extension-pkg-whitelist=lxml
-```
-
-**关于 pyright 会一直提示一些不是错误的错误，在 `CocConfig` 中加入配置：`python.analysis.typeCheckingMode: off`**
-
-关于代码里面写 TODO 注释会出现提示信息，是因为本地的 LSP 等插件是不建议出现 TODO 注释的。直接使用注释就要可以，一般就公共工程需要使用 TODO 注释，用来提示短时间内补全功能。
+- 使用`G`这样的跳转命令时，vim会维护一个`jumps`列表，里面记录了跳转时光标所在位置，列表最大为100行，通过`ctrl-o`与`ctrl-i`进行上一个跳转位置与下一个跳转位置的切换。例如：在文件底部用`gg`命令回到文件头，进行编辑后。可以用`ctrl-o`回到文件底部的跳转位置。用`ctrl-i`回到文件头部跳转的位置。
 
 
 ## Linux
