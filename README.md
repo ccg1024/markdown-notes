@@ -354,6 +354,8 @@ extension-pkg-whitelist=lxml
 
 - 在可视块模式中，选中块通过`I`或`A`进入插入模式后，可以通过`c-r"`+`registername`实现将对应寄存器内容粘贴。
 
+- `res[ize] +num`上下分屏时，增加窗口大小num行。`vert[ical] res[ize] +num`左右分屏时，增加窗口大小num列。减小窗口大小使用减号。
+
 
 
 ## Linux
