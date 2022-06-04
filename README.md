@@ -66,6 +66,8 @@ the google font: `Source code pro` is not a patched font, in this macbook, there
 
 快捷键：`<c-=>`当前位置开启公式编辑，`<command> + =`转换成数学形式。
 
+在macbook版word中，实现在目录后才开始显示页码：（1）插入页码。（2）光标移至目录页最后一行，选择布局-分隔符-分节符-下一页。此时会在目录后面插入一个空白页，将后面的内容移到空白页即可。（3）选中目录后一页的页码，取消链接到上一节。（4）删除目录前面的页码，调整目录后面页码序号即可。
+
 ### Ranger
 由python编写的文件预览程序。通过`brew install ranger`安装。在终端使用`ranger`启动。该程序是支持一个`highlight`的程序的。（不清楚是不是一个程序）同样通过homebrew安装。安装后ranger会自动加载它，为文本文件添加高亮。同时，fzf这样的插件也会自动使用这个程序。
 
