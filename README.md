@@ -438,6 +438,7 @@ $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 # 对于弹出的消息按回车即可，内容大概是问存储位置，设置使用该密钥时的密码等。
 ```
 
+
 ```bash
 # 对新的空仓库推送
 # 若本地也没有文件，只是建立本地与远程连接时
@@ -448,6 +449,8 @@ $ git branch -M main
 $ git remote add origin remote_address
 $ git push -u origin main
 ```
+
+
 ```bash
 # 查看本地与远程的差别
 $ git fetch origin
@@ -456,6 +459,7 @@ $ git status
 # 查看远程连接地址
 $ git remote -v
 ```
+
 
 ## python
 
@@ -478,5 +482,26 @@ $ git remote -v
 >>> res2.group(1)
 ' is '
 >>> # group(0)显示当前匹配的整个字符是哪些，以及对于原字符串的下标
+```
+
+
+### 模块搜索路径
+
+在python中默认的库/模块搜索路径通过`sys.path`可以查看。当需要使用自定义的模块时，需要用`from xxx import xxx`的形式，可能需要手动将自定义模块的路径添加到路径中。
+
+```python
+"""
+设目录如下
+models/
+  | model1.py
+  | model2.py
+tests/
+  | test.py
+path: /Users/ccg/models
+在test.py中导入model2.py
+"""
+import sys
+sys.path.append("/Users/ccg/models")
+from models import model2
 ```
 
