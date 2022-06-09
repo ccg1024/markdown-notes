@@ -7,7 +7,6 @@
 ### 检验安装模式
 
 通过U盘进入安装环境后，在虚拟终端中输入
-
 ```bash
 $ ls /sys/firmware/efi/efivars
 ```
@@ -443,4 +442,8 @@ keycode 66 = Control_L Caps_Lock NoSymbol NoSymbol
 keysym Escape = grave asciitilde grave asciitilde
 keysym grave asciitilde grave asciitilde = Escape
 ```
+
+## issus
+
+pacman的数据锁文件放在`/var/lib/pacman/db.lck`，当中途停止pacman的命令时，下次使用需要删除该文件锁。
 
