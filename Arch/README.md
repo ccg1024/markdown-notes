@@ -447,3 +447,14 @@ keysym grave asciitilde grave asciitilde = Escape
 
 pacman的数据锁文件放在`/var/lib/pacman/db.lck`，当中途停止pacman的命令时，下次使用需要删除该文件锁。
 
+### U disk
+
+可以使用安装过程中挂载主分区那样的方式直接将U盘挂载到某个文件。这里使用`udisks2`包进行挂载。使用手动挂载的方式。自动挂载需要编辑一个脚本文件。
+
+通过`lsblk`或者`fdisk -l`查看U盘在系统中的设备名，本机应该是`/dev/sdc`（通过lsblk查看结果），若使用fdisk命令，应看到sdc1。
+
+- `udisksctl mount -b /dev/sdc`：挂载U盘，默认挂载到文件`/run/media/william/xxx`，在xxx文件夹中有一个`System Volume Information`文件夹，应该是该工具包挂载生成的。实际上不存在U盘内部。xxx文件夹就是U盘内部了。
+
+- `udisksctl unmount -b /dev/sdc`：取消挂载，也就是弹出U盘。
+
+
