@@ -59,6 +59,24 @@ $ ./xxx.sh
 
 在正常的执行的脚本过程，都是在当前的shell环境下将参数传给一个子shell。因此一些命令在当前环境不会有效果，需要使用如下执行方式：`. ./xxx.sh` 。
 
+#### tmux
+
+```
+# create a session
+tmux new -s sessionName
+
+# detach from a session
+ctrl+a d
+# or
+tmux detach
+
+# check session list
+tmux ls
+
+# enter a session
+tmux attach -t <sessionName>
+```
+
 ### Font
 the google font: `Source code pro` is not a patched font, in this macbook, there is a `source code pro for powerline`, and I installed the `source code pro` font, but for better performence in some place. Like vim-airline, also installed the nerd font version, but the name has been changed to `SauceCodePro Nerd Font Mono`. In some reason as the nerd-font github say.
 
@@ -359,6 +377,8 @@ extension-pkg-whitelist=lxml
 - 在可视块模式中，选中块通过`I`或`A`进入插入模式后，可以通过`c-r"`+`registername`实现将对应寄存器内容粘贴。
 
 - `res[ize] +num`上下分屏时，增加窗口大小num行。`vert[ical] res[ize] +num`左右分屏时，增加窗口大小num列。减小窗口大小使用减号。
+
+- `gv`跳转到上次选择的地方并再次选择。
 
 
 
