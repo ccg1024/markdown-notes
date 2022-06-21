@@ -77,6 +77,16 @@ tmux ls
 tmux attach -t <sessionName>
 ```
 
+通过插件`tmux-resurrent`能够将会话保存到本地，将该github项目克隆到`~/.tmux`下，在配置文件`~/.tmux.conf`中添加如下配置。
+
+```
+run-shell ~/.tmux/tmux-resurrect/resurrect.tmux
+
+# prefix <c-s> store session
+# prefix <c-r> reload session
+# the data will be store at ~/.tmux/resurrect/
+```
+
 ### Font
 the google font: `Source code pro` is not a patched font, in this macbook, there is a `source code pro for powerline`, and I installed the `source code pro` font, but for better performence in some place. Like vim-airline, also installed the nerd font version, but the name has been changed to `SauceCodePro Nerd Font Mono`. In some reason as the nerd-font github say.
 
