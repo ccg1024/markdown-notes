@@ -468,3 +468,13 @@ pacman的数据锁文件放在`/var/lib/pacman/db.lck`，当中途停止pacman�
 ### rofi
 
 与dmenu一样的程序启动器，主题仓库`https://github.com/adi1090x/rofi`
+
+### flameshot
+
+一款开源截图软件，在rofi中使用`flameshot gui`开始截图。
+
+### arch.icekylin
+
+比较新的archlinux入门网站，
+[地址](https://arch.icekylin.online/)
+
