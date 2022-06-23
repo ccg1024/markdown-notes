@@ -75,6 +75,18 @@ tmux ls
 
 # enter a session
 tmux attach -t <sessionName>
+
+# get shortcut keys help
+ctrl+b ?
+
+# create new windows
+ctrl+b c
+
+# rename windows name
+ctrl+b ,
+
+# rename session name
+ctrl+b $
 ```
 
 通过插件`tmux-resurrent`能够将会话保存到本地，将该github项目克隆到`~/.tmux`下，在配置文件`~/.tmux.conf`中添加如下配置。
