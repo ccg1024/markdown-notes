@@ -113,6 +113,13 @@ the google font: `Source code pro` is not a patched font, in this macbook, there
 ### Ranger
 由python编写的文件预览程序。通过`brew install ranger`安装。在终端使用`ranger`启动。该程序是支持一个`highlight`的程序的。（不清楚是不是一个程序）同样通过homebrew安装。安装后ranger会自动加载它，为文本文件添加高亮。同时，fzf这样的插件也会自动使用这个程序。
 
+下载Ranger后，会在`/opt/homebrew/bin`下生成一个ranger的脚本，就是通过这个脚本来启动程序的，若直接使用`ranger`来启动程序，则退出程序时只会回到启动ranger时的目录，只有通过`S`在当前目录生成新的Shell才能在当前目录打开终端。这容易导致套娃现象。同时在Arch的使用当中，存在卡壳现象。更具ranger脚本中注释的描述，可以使用`source`命来来加载这个脚本，这样在退出程序时，会留在当前目录，不会回到启动时的目录下。在`~/.zshrc`文件中添加别名指令。减少敲击的命令。
+
+```shell
+alias ra='source ranger'
+```
+
+
 ## vim
 
 ### 笔记
