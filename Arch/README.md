@@ -478,3 +478,24 @@ pacman的数据锁文件放在`/var/lib/pacman/db.lck`，当中途停止pacman�
 比较新的archlinux入门网站，
 [地址](https://arch.icekylin.online/)
 
+### zathura
+
+一款linux下开源的pdf阅读器，能够支持多种格式，出了普通的pdf，还有EPUB等格式的支持，具体可以查看archwiki。
+
+```shell
+# for pdf read
+$ sudo pacman -S zathura zathura-pdf-poppler
+```
+
+
+> the config file is located in ~/.config/zathura/zathurarc
+
+
+### btop
+
+一款终端资源检测工具，能够显示cpu，内存，后台运行进程等信息。通过`<esc>`呼出菜单可修改设置，查看帮助。
+
+```shell
+$ sudo pacman -S btop
+```
+
