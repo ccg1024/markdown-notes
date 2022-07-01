@@ -499,3 +499,32 @@ $ sudo pacman -S zathura zathura-pdf-poppler
 $ sudo pacman -S btop
 ```
 
+### 外接显示器
+
+通常情况下，外接显示器的接口是接在GPU上的，按照自己安装Arch linux的笔记流程，默认使用的是集成显卡来显示桌面。这种情况下，连接显示器是不会有显示效果的，需要将主要的显卡切换到nvidia显卡上。（当前电脑是一个intel核显，一个nvidia独显）。
+
+之前是安装过`optimus-manager`软件，该软件能够实现在显卡之间的切换。但是，由于使用的`Xorg`来启动的窗口管理界面，不是桌面环境。在使用前后需要介入额外的命令。
+
+```shell
+# after startx command
+$ prime-offload
+
+# show info of current GPU
+$ optimus-manager --status
+
+# switch to nvidia GPU
+$ optimus-manager --switch nvidia
+
+# switch to integrated GPU
+$ optimus-manager --switch integrated
+
+# switch to hybrid model
+# but need some config
+$ optimus-manager --switch hybrid
+```
+**note**: 在结束xorg服务后，比如退出i3wm后，需要执行命令: `sudo prime-switch`，才能够成功切换显卡模式。
+
+> 每次切换显卡都会自动推出窗口环境。
+
+> glxinfo | egrep "OpenGL vendor|OpenGL renderer" 同样能偶查看当前使用的显卡名称。
+
