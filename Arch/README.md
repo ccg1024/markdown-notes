@@ -528,3 +528,10 @@ $ optimus-manager --switch hybrid
 
 > glxinfo | egrep "OpenGL vendor|OpenGL renderer" 同样能偶查看当前使用的显卡名称。
 
+### file manager
+
+某些情况下需要用到图形化文件管理器。选择安装的是GNOME桌面环境的默认文件管理器`nautilus`，安装后通过命令`Files`打开。
+
+### bleachbit
+
+一款linux下的开源清理工具。
