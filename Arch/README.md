@@ -478,6 +478,67 @@ pacman的数据锁文件放在`/var/lib/pacman/db.lck`，当中途停止pacman�
 比较新的archlinux入门网站，
 [地址](https://arch.icekylin.online/)
 
+<<<<<<< HEAD
+
+=======
+### zathura
+
+一款linux下开源的pdf阅读器，能够支持多种格式，出了普通的pdf，还有EPUB等格式的支持，具体可以查看archwiki。
+
+```shell
+# for pdf read
+$ sudo pacman -S zathura zathura-pdf-poppler
+```
+
+
+> the config file is located in ~/.config/zathura/zathurarc
+
+
+### btop
+
+一款终端资源检测工具，能够显示cpu，内存，后台运行进程等信息。通过`<esc>`呼出菜单可修改设置，查看帮助。
+
+```shell
+$ sudo pacman -S btop
+```
+
+### 外接显示器
+
+通常情况下，外接显示器的接口是接在GPU上的，按照自己安装Arch linux的笔记流程，默认使用的是集成显卡来显示桌面。这种情况下，连接显示器是不会有显示效果的，需要将主要的显卡切换到nvidia显卡上。（当前电脑是一个intel核显，一个nvidia独显）。
+
+之前是安装过`optimus-manager`软件，该软件能够实现在显卡之间的切换。但是，由于使用的`Xorg`来启动的窗口管理界面，不是桌面环境。在使用前后需要介入额外的命令。
+
+```shell
+# after startx command
+$ prime-offload
+
+# show info of current GPU
+$ optimus-manager --status
+
+# switch to nvidia GPU
+$ optimus-manager --switch nvidia
+
+# switch to integrated GPU
+$ optimus-manager --switch integrated
+
+# switch to hybrid model
+# but need some config
+$ optimus-manager --switch hybrid
+```
+**note**: 在结束xorg服务后，比如退出i3wm后，需要执行命令: `sudo prime-switch`，才能够成功切换显卡模式。
+
+> 每次切换显卡都会自动推出窗口环境。
+
+> glxinfo | egrep "OpenGL vendor|OpenGL renderer" 同样能偶查看当前使用的显卡名称。
+
+### file manager
+
+某些情况下需要用到图形化文件管理器。选择安装的是GNOME桌面环境的默认文件管理器`nautilus`，安装后通过命令`Files`打开。
+
+### bleachbit
+
+一款linux下的开源清理工具。
+
 ### picom
 
 关于picom会给所有软件都添加透明效果问题，在arch都论坛中有提及，是一个随机bug。
@@ -486,5 +547,4 @@ pacman的数据锁文件放在`/var/lib/pacman/db.lck`，当中途停止pacman�
 ```shell
 picom -bcCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -D2 -m 0.88 --config /dev/null &
 ```
-
-
+>>>>>>> 5e157bf53c06b0e6146401bb3776ef0a262a9e22
