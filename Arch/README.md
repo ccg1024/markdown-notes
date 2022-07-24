@@ -478,3 +478,13 @@ pacman的数据锁文件放在`/var/lib/pacman/db.lck`，当中途停止pacman�
 比较新的archlinux入门网站，
 [地址](https://arch.icekylin.online/)
 
+### picom
+
+关于picom会给所有软件都添加透明效果问题，在arch都论坛中有提及，是一个随机bug。
+有人提及一个解决方案如下。
+
+```shell
+picom -bcCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -D2 -m 0.88 --config /dev/null &
+```
+
+
