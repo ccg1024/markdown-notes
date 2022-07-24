@@ -478,9 +478,7 @@ pacman的数据锁文件放在`/var/lib/pacman/db.lck`，当中途停止pacman�
 比较新的archlinux入门网站，
 [地址](https://arch.icekylin.online/)
 
-<<<<<<< HEAD
 
-=======
 ### zathura
 
 一款linux下开源的pdf阅读器，能够支持多种格式，出了普通的pdf，还有EPUB等格式的支持，具体可以查看archwiki。
@@ -547,4 +545,3 @@ $ optimus-manager --switch hybrid
 ```shell
 picom -bcCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -D2 -m 0.88 --config /dev/null &
 ```
->>>>>>> 5e157bf53c06b0e6146401bb3776ef0a262a9e22
