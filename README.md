@@ -119,6 +119,24 @@ the google font: `Source code pro` is not a patched font, in this macbook, there
 alias ra='source ranger'
 ```
 
+### C/C++
+
+在macbook下，编辑运行c语言文件无需windows中那样需要下载一个minGW的东西。直接通过编辑器编辑文件后通过gcc/g++来编译文件即可。
+
+```shell
+# test.c
+gcc -o test test.c
+
+# test.cpp
+g++ -o test test.c
+
+# run compiled file
+./test
+```
+
+> -o 表示直接生成可执行文件，编译器可以按照计算机组成原理中的四个步骤：预处理，
+> 编译，汇编，链接分步进行。
+
 
 ## vim
 
@@ -464,6 +482,17 @@ mode:
 - r: read
 - w: write
 - x: execute
+
+
+## neovim
+
+### myplugin
+
+尝试编写一个弹出窗口管理buffer内容的小插件，已有的插件是JABS。在编辑插件的过程中，
+常用的一些文件夹用途如下。
+
+- `plugin`: 该文件夹下的内容会在nvim启动时自动读取执行。
+- `lua`: 该文件中的内容需要在配置文件中使用`require 'xxx'`后才会执行。
 
 ##  Git
 
