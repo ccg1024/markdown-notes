@@ -315,7 +315,7 @@ $ sudo pacman -S xorg xorg-server xorg-xinit
 
 #### 模拟终端
 
-**st**
+##### st
 
 ```bash
 $ git clone https://git.suckless.org/st
@@ -331,9 +331,11 @@ X11LIB = /usr/include/X11
 
 通过`sudo make clean install`编译生成软件。将默认配置文件`config.def.h`删除，需先编译一遍。
 
+##### alacritty
+
 #### 快速启动软件
 
-**dmenu**
+##### dmenu
 
 ```bash
 $ git clone https://git.suckless.org/dmenu
@@ -341,9 +343,11 @@ $ git clone https://git.suckless.org/dmenu
 
 操作同 **st**。
 
+##### rofi
+
 #### 窗口管理软件
 
-**i3wm**
+##### i3wm
 
 ```bash
 $ pacman -S i3-gaps polybar
@@ -368,7 +372,9 @@ $ polybar bar1 &
 
 就能在后台运行bar1配置文件样式了。`killall polybar`可以杀死所有polybar进程。
 
-**dwm**
+> polybar 实现透明背景只需要在背景颜色前加入aa，例如，背景色为`#1e1e3e`时，修改成`#aa1e1e3e`就可以实现透明背景。
+
+##### dwm
 
 ```bash
 $ git clone https://git.suckless.org/dwm
