@@ -539,6 +539,21 @@ $ optimus-manager --switch hybrid
 
 某些情况下需要用到图形化文件管理器。选择安装的是GNOME桌面环境的默认文件管理器`nautilus`，安装后通过命令`Files`打开。
 
+在i3的环境中，每个软件在需要使用到文件管理器的情况下时，都是依据自身的设置绘制文件管理窗口。
+这就导致某些软件的窗口非常老旧。如`flameshot`软件。若需要像桌面环境那样每个软件都使用统一的管理。
+通过网上搜索。提到两个环境变量：`DE`, `XDG_CURRENT_DESKTOP`。暂时没去验证两个都要还是只要其中一个即可。
+
+```shell
+# in shell rc file.
+# .zshrc for example.
+# set to gnome, kde etc. the nautilus is gnome's default file manager
+export DE='gnome'
+export XDG_CURRENT_DESKTOP=gnome
+
+# need add to PATH
+export PATH = $PATH:$DE:$XDG_CURRENT_DESKTOP
+```
+
 ### bleachbit
 
 一款linux下的开源清理工具。
