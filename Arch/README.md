@@ -315,7 +315,7 @@ $ sudo pacman -S xorg xorg-server xorg-xinit
 
 #### 模拟终端
 
-**st**
+##### st
 
 ```bash
 $ git clone https://git.suckless.org/st
@@ -331,9 +331,11 @@ X11LIB = /usr/include/X11
 
 通过`sudo make clean install`编译生成软件。将默认配置文件`config.def.h`删除，需先编译一遍。
 
+##### alacritty
+
 #### 快速启动软件
 
-**dmenu**
+##### dmenu
 
 ```bash
 $ git clone https://git.suckless.org/dmenu
@@ -341,9 +343,11 @@ $ git clone https://git.suckless.org/dmenu
 
 操作同 **st**。
 
+##### rofi
+
 #### 窗口管理软件
 
-**i3wm**
+##### i3wm
 
 ```bash
 $ pacman -S i3-gaps polybar
@@ -368,7 +372,9 @@ $ polybar bar1 &
 
 就能在后台运行bar1配置文件样式了。`killall polybar`可以杀死所有polybar进程。
 
-**dwm**
+> polybar 实现透明背景只需要在背景颜色前加入aa，例如，背景色为`#1e1e3e`时，修改成`#aa1e1e3e`就可以实现透明背景。
+
+##### dwm
 
 ```bash
 $ git clone https://git.suckless.org/dwm
@@ -532,6 +538,21 @@ $ optimus-manager --switch hybrid
 ### file manager
 
 某些情况下需要用到图形化文件管理器。选择安装的是GNOME桌面环境的默认文件管理器`nautilus`，安装后通过命令`Files`打开。
+
+在i3的环境中，每个软件在需要使用到文件管理器的情况下时，都是依据自身的设置绘制文件管理窗口。
+这就导致某些软件的窗口非常老旧。如`flameshot`软件。若需要像桌面环境那样每个软件都使用统一的管理。
+通过网上搜索。提到两个环境变量：`DE`, `XDG_CURRENT_DESKTOP`。暂时没去验证两个都要还是只要其中一个即可。
+
+```shell
+# in shell rc file.
+# .zshrc for example.
+# set to gnome, kde etc. the nautilus is gnome's default file manager
+export DE='gnome'
+export XDG_CURRENT_DESKTOP=gnome
+
+# need add to PATH
+export PATH = $PATH:$DE:$XDG_CURRENT_DESKTOP
+```
 
 ### bleachbit
 
