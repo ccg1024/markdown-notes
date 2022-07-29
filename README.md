@@ -538,6 +538,18 @@ $ git status
 $ git remote -v
 ```
 
+```bash
+# create new branch
+$ git checkout -b new_branch_name
+
+# switch branch
+$ git checkout branch_name
+
+# merge feature branch to main
+$ git checkout main
+$ git merge feature
+```
+
 
 ## python
 
