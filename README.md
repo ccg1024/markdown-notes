@@ -138,6 +138,23 @@ g++ -o test test.c
 > 编译，汇编，链接分步进行。
 
 
+### maven
+
+```shell
+# build a simple maven project
+# `my-app` is the project folder name (can generation automaticly).
+# `com.mycompany.app` is the folder to put java code.
+# could add -X to see the info
+# add -DarchetypeCatalog=local to check archetype-catalog.xml in local, when the network is slow.
+# need download this file manually, and put it to ~/.m2/repository/org/apache/maven/archetype/maven-archetype/xxx-version/
+$ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+
+# build a simple web app
+$ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4 -DinteractiveMode=false
+```
+
+> -DarchetypeVersion could not be set.
+
 ## vim
 
 ### 笔记
