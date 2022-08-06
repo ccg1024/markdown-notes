@@ -145,6 +145,14 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 > **[!/2022/5/24]** `Syy`是强制更新软件源，根据网上说法，通常不建议强制更新。正常更新系统为：`sudo pacman -Syu`。暂时的策略为，非必要情况下不连续使用两个相同的字母，如yy，cc等。
 
 
+**清理缓存**
+
+```shell
+# remove all old package cache
+$ sudo pacman -Sc
+```
+
+
 ### 下载并安装内核
 
 下载linux基本框架与内核并安装到主空间中。
