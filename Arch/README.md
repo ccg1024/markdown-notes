@@ -438,6 +438,24 @@ $ tar -zxvf test.tar.gz
 
 但是依旧无法连接google.
 
+### V2ray & V2rayA
+
+另一个代理软件，通过pacman安装，后者是一个网页版前端，初次登陆需要设置账户，当前创建的账户名为：william，密码：eawqr123，代理可用。
+
+通常终端设置代理就是在配置文件中添加环境变量。以zsh为例。
+
+```shell
+# if the http port is 12345
+export http_proxy="http://127.0.0.1:12345"
+export https_proxy="http://127.0.0.1:12345"
+
+# if the socket5 port is 12345
+export http_proxy="socks5://127.0.0.1:12345"
+export https_proxy="socks5://127.0.0.1:12345"
+```
+
+> 终端不会代理icmp，需要使用curl命令查看连通性。在v2rayA的git项目上的常见问题版块有描述。
+
 ### Linux
 
 #### 进程
