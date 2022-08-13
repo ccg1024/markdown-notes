@@ -594,7 +594,7 @@ export PATH = $PATH:$DE:$XDG_CURRENT_DESKTOP
 
 **依据picom的设置，应该是默认为某种规则下的前端窗口软件添加透明背景。在使用中，
 火狐浏览器右键时会又透明，其他情况下没有。谷歌浏览器完全没有透明背景等。
-此时通过配置文件中为具体的软件配置透明参数。注意：一个软件需要配置两条。**
+此时通过配置文件中为具体的软件配置透明参数。注意：一个软件需要配置两条**。
 
 ```shell
 picom -bcCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -D2 -m 0.88 --config /dev/null &
@@ -606,4 +606,17 @@ picom -bcCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -D2 -m 0.88 --config /dev/nul
 
 > 启用picom渲染后，无意解决来i3在程序启用浮动窗口模式时，通过鼠标拖动，修改窗口大小时。
 > 会出现移动位置存在绿色花屏的情况。
+
+### 中文设置
+
+在安装过程中已经设置过中文对应的编码并生成来本地环境。只需要在`~/.xinitrc`文件中添加如下语句即可让支持中文的软件识别成中文环境。需要重启电脑才生效。
+
+```shell
+export LANG=zh_CN.UTF-8
+export LANGUAGE=zh_CN:en_US
+```
+
+若在安装过程中没能够生成中文编码，需要先进入文件`/etc/locale.gen`，将中文编码前的注释去除。格式为`#zh_CN.xxx`，随后执行命令`locale-gen`。来生成本地编码。
+
+[arch 官网教程：https://wiki.archlinux.org/title/Localization/Simplified_Chinese](https://wiki.archlinux.org/title/Localization/Simplified_Chinese) 
 
