@@ -7,6 +7,7 @@
 ### 检验安装模式
 
 通过U盘进入安装环境后，在虚拟终端中输入
+
 ```bash
 $ ls /sys/firmware/efi/efivars
 ```
@@ -23,7 +24,7 @@ $ setfont /usr/share/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz
 
 想要永久设置虚拟终端的字体，需要在文件`/etc/vconsole.conf`中添加设置
 
-```
+```shell
 FONT=LatGrkCyr-12x22
 ```
 
@@ -34,7 +35,6 @@ FONT=LatGrkCyr-12x22
 - 编辑`personal`文件，交换`keycode 1`与`keycode 58`的值（对应`Escape`与`CapsLock`）;
 - 保存后，用`gzip personal`压缩该文件。
 - 在文件`/etc/vconsole.conf`中添加：`KEYMAP=personal`;
-
 
 ### 连接网络
 
@@ -66,7 +66,6 @@ $ timedatectl set-ntp true
 - 输入划分多少空间，默认是所有可用空间，需要手动修改。
 - 回车后，选择[Write]并输入yes，**必须输入yes再回车，直接用回车不会将更改内容真的写入磁盘**;
 
-
 ### 格式化磁盘空间
 
 设划分出来的三个磁盘空间为`/dev/sdb7`, `/dev/sdb8`, `/dev/sdb9`。分别对应EFI，交换空间，主空间。
@@ -74,7 +73,6 @@ $ timedatectl set-ntp true
 - 格式化引导区(EFI)：`mkfs.fat -F 32 /dev/sdb7`;
 - 格式化主分区：`mkfs.ext4 /dev/sdb9`;
 - 格式化交换空间：`mkswap /dev/sdb8`;
-
 
 ### 挂载
 
@@ -121,7 +119,7 @@ $ pacman -S pacman-mirrorlist
 
 编辑`/etc/pacman.conf`
 
-```
+```shell
 # 找到下面两条注释内容，将注释取消
 #[multilib]
 #Include = /etc/pacman.d/mirrorlist
@@ -144,14 +142,12 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 
 > **[!/2022/5/24]** `Syy`是强制更新软件源，根据网上说法，通常不建议强制更新。正常更新系统为：`sudo pacman -Syu`。暂时的策略为，非必要情况下不连续使用两个相同的字母，如yy，cc等。
 
-
 **清理缓存**
 
 ```shell
 # remove all old package cache
 $ sudo pacman -Sc
 ```
-
 
 ### 下载并安装内核
 
@@ -197,7 +193,7 @@ $ locale-gen
 
 有些软件会读取`/etc/hosts`文件，这个文件内容是空的需要手动添加如下内容。
 
-```
+```shell
 127.0.0.1        localhost
 ::1              localhost
 127.0.1.1        myhostname
@@ -235,7 +231,6 @@ $ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 
 > `--bootloader-id`可以不写，这个是在系统的BIOS界面选择那个启动引导时显示的名称，默认是以系统命名——Arch。
 
-
 ### 安装必要软件
 
 主要是编辑器，网络连接工具，不凡新系统不自带网络连接工具的
@@ -245,7 +240,6 @@ $ pacman -S neovim zsh wpa_supplicant dhcpcd networkmanager net-tools
 ```
 
 至此Arch linux 系统安装完毕。重启进入新系统。
-
 
 ## 基础环境
 
@@ -331,7 +325,7 @@ $ git clone https://git.suckless.org/st
 
 下载后进入`st`文件夹，修改`confg.mk`文件
 
-```
+```shell
 # 将这下面两个变量值修改如下
 X11INC = /usr/include/X11
 X11LIB = /usr/include/X11
@@ -400,7 +394,6 @@ $ sudo pacman -S noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-
 
 # install code font
 $ sudo pacman -S nerd-fonts-source-code-pro adobe-source-code-pro-fonts
-
 ```
 
 通过`fc-list`可以查看所有安装的字体。
@@ -413,7 +406,7 @@ $ sudo pacman -S fcitx5-chinese-addons fcitx5-git fcitx5-gtk fcitx5-qt fcitx5-pi
 
 编辑文件`/etc/profile`，在最后添加如下内容
 
-```
+```shell
 export INPUT_METHOD="fcitx5"
 export XMODIFIERS="@im=fcitx5"
 export GTK_IM_MODULE="fcitx5"
@@ -423,7 +416,6 @@ export QT_IM_MODULE="fcitx5"
 同dmenu启动fcitx5-config-qt，在图形见面中添加输入法`pinyin`。可以在这个界面找到输入法字体大小的设置。
 
 > 大部分需要一直运行的软件都可以在`~/.xinitrc`中启动，注：需要在执行窗口管理软件前启动。
-
 
 ### 解压
 
@@ -458,7 +450,6 @@ export https_proxy="socks5://127.0.0.1:12345"
 
 > 使用该代理后，应该影响本地DNS，正常情况下访问网络没问题。但会让Ghelper无法使用，需要先启动一次该代理。随后关闭。Ghelper就可以使用。
 
-
 ### Linux
 
 #### 进程
@@ -469,7 +460,7 @@ export https_proxy="socks5://127.0.0.1:12345"
 
 通过`xmodmap`来修改映射。编辑文件`~/.Xmodmap`，下面例子为交换`~`与`esc`，`capsLock`变成`ctrl_l`，`shift+Caps`映射为`capsLock`
 
-```
+```shell
 clear lock
 clear control
 add control = Caps_Lock Control_L Control_R
@@ -477,6 +468,8 @@ keycode 66 = Control_L Caps_Lock NoSymbol NoSymbol
 keysym Escape = grave asciitilde grave asciitilde
 keysym grave asciitilde grave asciitilde = Escape
 ```
+
+> 这样的键盘映射只会作用于生效配置时已经接入的键盘。后续在接入其他键盘时需要再次运行命令`xmodmap ~/.Xmodmap`才能够让新键盘也使用该映射。
 
 ## issus
 
@@ -513,7 +506,6 @@ pacman的数据锁文件放在`/var/lib/pacman/db.lck`，当中途停止pacman�
 比较新的archlinux入门网站，
 [地址](https://arch.icekylin.online/)
 
-
 ### zathura
 
 一款linux下开源的pdf阅读器，能够支持多种格式，出了普通的pdf，还有EPUB等格式的支持，具体可以查看archwiki。
@@ -523,9 +515,7 @@ pacman的数据锁文件放在`/var/lib/pacman/db.lck`，当中途停止pacman�
 $ sudo pacman -S zathura zathura-pdf-poppler
 ```
 
-
 > the config file is located in ~/.config/zathura/zathurarc
-
 
 ### btop
 
@@ -558,9 +548,10 @@ $ optimus-manager --switch integrated
 # but need some config
 $ optimus-manager --switch hybrid
 ```
+
 **note**: 在结束xorg服务后，比如退出i3wm后，需要执行命令: `sudo prime-switch`，才能够成功切换显卡模式。
 
-> 每次切换显卡都会自动推出窗口环境。
+> 每次切换显卡都会自动退出窗口环境。
 
 > glxinfo | egrep "OpenGL vendor|OpenGL renderer" 同样能偶查看当前使用的显卡名称。
 
@@ -568,9 +559,7 @@ $ optimus-manager --switch hybrid
 
 某些情况下需要用到图形化文件管理器。选择安装的是GNOME桌面环境的默认文件管理器`nautilus`，安装后通过命令`Files`打开。
 
-在i3的环境中，每个软件在需要使用到文件管理器的情况下时，都是依据自身的设置绘制文件管理窗口。
-这就导致某些软件的窗口非常老旧。如`flameshot`软件。若需要像桌面环境那样每个软件都使用统一的管理。
-通过网上搜索。提到两个环境变量：`DE`, `XDG_CURRENT_DESKTOP`。暂时没去验证两个都要还是只要其中一个即可。
+在i3的环境中，每个软件在需要使用到文件管理器的情况下时，都是依据自身的设置绘制文件管理窗口。这就导致某些软件的窗口非常老旧。如`flameshot`软件。若需要像桌面环境那样每个软件都使用统一的管理。通过网上搜索。提到两个环境变量：`DE`, `XDG_CURRENT_DESKTOP`。暂时没去验证两个都要还是只要其中一个即可。
 
 ```shell
 # in shell rc file.
@@ -602,6 +591,8 @@ picom -bcCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -D2 -m 0.88 --config /dev/nul
 
 上述方案在本地上是有参数错误的，近期发现picom在本地上配置文件曾经起过作用。
 后面又无法生效的原因：应该是使用ranger的过程中无意修改来配置文件的名称，导致程序无法检索到配置文件。
+
+
 现在picom配置生效，且配置来透明背景与毛玻璃效果。日期：2022/7/27
 
 > 启用picom渲染后，无意解决来i3在程序启用浮动窗口模式时，通过鼠标拖动，修改窗口大小时。
@@ -619,4 +610,11 @@ export LANGUAGE=zh_CN:en_US
 若在安装过程中没能够生成中文编码，需要先进入文件`/etc/locale.gen`，将中文编码前的注释去除。格式为`#zh_CN.xxx`，随后执行命令`locale-gen`。来生成本地编码。
 
 [arch 官网教程：https://wiki.archlinux.org/title/Localization/Simplified_Chinese](https://wiki.archlinux.org/title/Localization/Simplified_Chinese) 
+
+
+
+> 设置成中文环境后，能够解决在英文环境下，某些中文字体显示的是日文/繁体版本。例如`即`字。在英文环境就有显示错误问题。
+> 
+> 同时，设置成中文环境后，某型字体符号相对与英文环境会变大。最直接的就是nvim中的bufferline插件，当修改文件时会有一个绿色球体符号。该符号在中文环境中表现较大，英文环境中就比较小。
+
 
