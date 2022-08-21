@@ -100,6 +100,7 @@ run-shell ~/.tmux/tmux-resurrect/resurrect.tmux
 ```
 
 ### Font
+
 the google font: `Source code pro` is not a patched font, in this macbook, there is a `source code pro for powerline`, and I installed the `source code pro` font, but for better performence in some place. Like vim-airline, also installed the nerd font version, but the name has been changed to `SauceCodePro Nerd Font Mono`. In some reason as the nerd-font github say.
 
 ### word
@@ -111,6 +112,7 @@ the google font: `Source code pro` is not a patched font, in this macbook, there
 有下划线时，打空格不显示下划线可以使用`option+shift+space`的方式插入空格，就有下划线了。
 
 ### Ranger
+
 由python编写的文件预览程序。通过`brew install ranger`安装。在终端使用`ranger`启动。该程序是支持一个`highlight`的程序的。（不清楚是不是一个程序）同样通过homebrew安装。安装后ranger会自动加载它，为文本文件添加高亮。同时，fzf这样的插件也会自动使用这个程序。
 
 下载Ranger后，会在`/opt/homebrew/bin`下生成一个ranger的脚本，就是通过这个脚本来启动程序的，若直接使用`ranger`来启动程序，则退出程序时只会回到启动ranger时的目录，只有通过`S`在当前目录生成新的Shell才能在当前目录打开终端。这容易导致套娃现象。同时在Arch的使用当中，存在卡壳现象。更具ranger脚本中注释的描述，可以使用`source`命来来加载这个脚本，这样在退出程序时，会留在当前目录，不会回到启动时的目录下。在`~/.zshrc`文件中添加别名指令。减少敲击的命令。
@@ -136,7 +138,6 @@ g++ -o test test.c
 
 > -o 表示直接生成可执行文件，编译器可以按照计算机组成原理中的四个步骤：预处理，
 > 编译，汇编，链接分步进行。
-
 
 ### maven
 
@@ -265,7 +266,6 @@ endif
 let g:gruvbox_contrast_dark='medium'
 
 :colorscheme gruvbox
-
 ```
 
 ### nerdtree
@@ -369,7 +369,6 @@ extension-pkg-whitelist=lxml
 
 网上推荐的图标插件通常为`vim-devicons`，但该插件默认是没有颜色的。`nvim-web-devicons`是该项目的fork，添加了颜色。
 
-
 ### 常用命令
 
 - `:edit filename`来打开或创建一个文件；
@@ -395,7 +394,7 @@ extension-pkg-whitelist=lxml
 - `:delmark 字母`删除该字母的标记；
 
 - `"+y`将内容复制到系统剪切板中，同理，使用`"+p`将系统剪切板中的内容复制过来，需要添加如下配置，对于nvim来说需要额外的终端剪切板工具；
-
+  
   ```vim
   set clipboard=unnamed
   ```
@@ -444,8 +443,6 @@ extension-pkg-whitelist=lxml
 
 - `gv`跳转到上次选择的地方并再次选择。
 
-
-
 ## Linux
 
 ### Arch Linux
@@ -465,7 +462,7 @@ extension-pkg-whitelist=lxml
 网上常见的方式，最常见的一个命令就是`chmod 777 filename`，这个命令其实是将三个权限给所有用户。数值方式修改权限时，是一次性修改三个权限对象的，即所有者，组，其他。数值代表权限数值的和。
 
 | owner     | group     | others    |
-| --        | --        | --        |
+| --------- | --------- | --------- |
 | r   w  x  | r  w   x  | r  w  x   |
 | (4)(2)(1) | (4)(2)(1) | (4)(2)(1) |
 
@@ -500,7 +497,6 @@ mode:
 - w: write
 - x: execute
 
-
 ## neovim
 
 ### myplugin
@@ -511,7 +507,7 @@ mode:
 - `plugin`: 该文件夹下的内容会在nvim启动时自动读取执行。
 - `lua`: 该文件中的内容需要在配置文件中使用`require 'xxx'`后才会执行。
 
-##  Git
+## Git
 
 ```bash
 # 查看当前用户配置
@@ -533,7 +529,6 @@ $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 # 对于弹出的消息按回车即可，内容大概是问存储位置，设置使用该密钥时的密码等。
 ```
 
-
 ```bash
 # 对新的空仓库推送
 # 若本地也没有文件，只是建立本地与远程连接时
@@ -544,7 +539,6 @@ $ git branch -M main
 $ git remote add origin remote_address
 $ git push -u origin main
 ```
-
 
 ```bash
 # 查看本地与远程的差别
@@ -567,16 +561,20 @@ $ git checkout main
 $ git merge feature
 ```
 
+```shell
+# change the remote address
+$ git remote set-url origin xxxx@new_address
+```
 
 ## python
 
 ### 正则
 
-正则匹配是，模式字符与资源字符的编码要统一。转意符为反斜杠 `\` 。正则表达式以两个反斜杠开头 `\\` 。	在python中，对字面意思的字符串使用转意符号时，都会产生一个警告，在未来甚至会称为一个语法错误。解决的方法是使用原始字符串表达形式，即 `r""` 。
+正则匹配是，模式字符与资源字符的编码要统一。转意符为反斜杠 `\` 。正则表达式以两个反斜杠开头 `\\`。在python中，对字面意思的字符串使用转意符号时，都会产生一个警告，在未来甚至会称为一个语法错误。解决的方法是使用原始字符串表达形式，即 `r""` 。
 
 官方文档：https://docs.python.org/3/library/re.html
 
-通配符贪心与非贪心方式， `.`, `*`, `+`, `?`, 为正则中的通配符，点表示匹配任意一个字符，星号表示匹配前面一个字符0次及以上，加号是1次及以上，问号是0次或1次。问号与前面的通配符使用就会使匹配模式变成非贪心——尽可能少匹配字符。例如：对于字符串 `<a>sdf<c>`，在通常的贪心模式下 `<.*>` 会匹配整个字符串，而非贪心写法 `<.*?>` 只会匹配到第一个a标签。
+通配符贪心与非贪心方式，`.`, `*`, `+`, `?`, 为正则中的通配符，点表示匹配任意一个字符，星号表示匹配前面一个字符0次及以上，加号是1次及以上，问号是0次或1次。问号与前面的通配符使用就会使匹配模式变成非贪心——尽可能少匹配字符。例如：对于字符串 `<a>sdf<c>`，在通常的贪心模式下 `<.*>` 会匹配整个字符串，而非贪心写法 `<.*?>` 只会匹配到第一个a标签。
 
 ```python
 >>> target = 'this is a string, and test.'
@@ -590,7 +588,6 @@ $ git merge feature
 ' is '
 >>> # group(0)显示当前匹配的整个字符是哪些，以及对于原字符串的下标
 ```
-
 
 ### 模块搜索路径
 
@@ -611,4 +608,3 @@ import sys
 sys.path.append("/Users/ccg/models")
 from models import model2
 ```
-
