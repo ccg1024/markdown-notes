@@ -592,7 +592,6 @@ picom -bcCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -D2 -m 0.88 --config /dev/nul
 上述方案在本地上是有参数错误的，近期发现picom在本地上配置文件曾经起过作用。
 后面又无法生效的原因：应该是使用ranger的过程中无意修改来配置文件的名称，导致程序无法检索到配置文件。
 
-
 现在picom配置生效，且配置来透明背景与毛玻璃效果。日期：2022/7/27
 
 > 启用picom渲染后，无意解决来i3在程序启用浮动窗口模式时，通过鼠标拖动，修改窗口大小时。
@@ -611,10 +610,46 @@ export LANGUAGE=zh_CN:en_US
 
 [arch 官网教程：https://wiki.archlinux.org/title/Localization/Simplified_Chinese](https://wiki.archlinux.org/title/Localization/Simplified_Chinese) 
 
-
-
 > 设置成中文环境后，能够解决在英文环境下，某些中文字体显示的是日文/繁体版本。例如`即`字。在英文环境就有显示错误问题。
 > 
 > 同时，设置成中文环境后，某型字体符号相对与英文环境会变大。最直接的就是nvim中的bufferline插件，当修改文件时会有一个绿色球体符号。该符号在中文环境中表现较大，英文环境中就比较小。
 
+### 蓝牙音频
 
+ 所需软件包
+
+```shell
+$ sudo pacman -S bluez bluez-utils pulseaudio-bluetooth
+```
+
+启动蓝牙
+
+```shell
+$ sudo systemctl start bluetooth.service
+```
+
+初次连接蓝牙
+
+```shell
+# into bluetooth manager page
+$ bluetoothctl
+[bluetoothctl] power on # open bluetooth
+[bluetoothctl] agnet on # open agent
+[bluetoothctl] scan on # begin scan, scan off stop scan
+[bluetoothctl] trust xx:xx:xx(device mac) # trust device
+[bluetoothctl] pair xx:xx:xx(device mac) # pair device
+[bluetoothctl] connect xx:xx:xx(device mac) # connect the device
+
+[bluetoothctl] disconnect xx:xx:xx(device mac) # disconnect the device
+```
+
+后续连接蓝牙
+
+```shell
+# show trusted devices
+$ bluetoothctl devices
+# connect
+$ bluetoothctl connect xx:xx:xx(device mac)
+```
+
+>  连接成功后可能需要切换音频，可通过图形化软件`pavucontrol`进行切换。
