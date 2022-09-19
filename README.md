@@ -156,6 +156,15 @@ $ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darche
 
 > -DarchetypeVersion could not be set.
 
+### mysql
+
+macbook的mysql服务在系统设置中开启与关闭，通常，mysql安装在路径`/usr/local/`下，一般会有一个软连接与真实文件夹，可以通过软连接设置命令。本机通过软连接设置别名命令。设置的命令为：eawqr123
+
+```shell
+# in .zshrc
+alias mysql='/usr/local/mysql/bin/mysql'
+```
+
 ## vim
 
 ### 笔记
@@ -506,6 +515,10 @@ mode:
 
 - `plugin`: 该文件夹下的内容会在nvim启动时自动读取执行。
 - `lua`: 该文件中的内容需要在配置文件中使用`require 'xxx'`后才会执行。
+
+### LSP
+
+通过插件lsp-installer安装lsp时，有些服务器安装好后会出现一些问题，最好通过服务器自己描述的方式进行安装，通常都是通过`npm`或者`homebrew`可以安装的。
 
 ## Git
 
