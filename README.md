@@ -156,6 +156,11 @@ $ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darche
 
 > -DarchetypeVersion could not be set.
 
+```shell
+# download dependency
+$ mvn dependency:resolve
+```
+
 ### mysql
 
 macbook的mysql服务在系统设置中开启与关闭，通常，mysql安装在路径`/usr/local/`下，一般会有一个软连接与真实文件夹，可以通过软连接设置命令。本机通过软连接设置别名命令。设置的命令为：eawqr123
