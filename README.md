@@ -156,6 +156,16 @@ $ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darche
 
 > -DarchetypeVersion could not be set.
 
+```shell
+# build and run a java file
+# path: path/to/MainJava.java
+$ mvn compile
+$ mvn exec:java -Dexec.mainClass="path.to.MainJava"
+
+# run a spring-boot app
+$ mvn spring-boot:run
+```
+
 ### mysql
 
 macbook的mysql服务在系统设置中开启与关闭，通常，mysql安装在路径`/usr/local/`下，一般会有一个软连接与真实文件夹，可以通过软连接设置命令。本机通过软连接设置别名命令。设置的命令为：eawqr123
@@ -620,4 +630,28 @@ path: /Users/ccg/models
 import sys
 sys.path.append("/Users/ccg/models")
 from models import model2
+```
+
+#### 终端运行问题
+
+使用上面的方法虽然能够在终端运行，但是无法对自定义的模块进行补全操作——相对于pyright来说。此时可以使用另一种方式。
+
+```python
+"""
+directory tree
+model/
+  | model1.py
+  | model2.py
+tests/
+  | test.py
+
+in pyrightconfig.json set "extraPaths": [".", "./models"]
+in test.py import model1.py
+"""
+from models import model1
+
+
+# run test.py
+# in project root
+# python -m tests.test
 ```
