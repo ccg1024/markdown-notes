@@ -634,7 +634,7 @@ $ sudo systemctl start bluetooth.service
 # into bluetooth manager page
 $ bluetoothctl
 [bluetoothctl] power on # open bluetooth
-[bluetoothctl] agnet on # open agent
+[bluetoothctl] agent on # open agent
 [bluetoothctl] scan on # begin scan, scan off stop scan
 [bluetoothctl] trust xx:xx:xx(device mac) # trust device
 [bluetoothctl] pair xx:xx:xx(device mac) # pair device
