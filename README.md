@@ -529,6 +529,16 @@ mode:
 - w: write
 - x: execute
 
+### command
+
+some usefull command.
+
+```shell
+# clear file.txt content
+$ : > file.txt
+```
+
+
 ## neovim
 
 ### myplugin
