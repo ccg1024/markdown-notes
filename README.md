@@ -111,6 +111,16 @@ the google font: `Source code pro` is not a patched font, in this macbook, there
 
 有下划线时，打空格不显示下划线可以使用`option+shift+space`的方式插入空格，就有下划线了。
 
+#### 快捷键
+
+| 快捷键                       | 功能                 |
+| ------------------------- | ------------------ |
+| <option> + <left>/<right> | 左右移动一个单词           |
+| <cmd> + <left>/<right>    | 移动到行首/尾            |
+| <shift> + <left>/<right>  | 左右选择文本，可以配合上面的移动按键 |
+| <cmd> + L/R/E             | 文本左右居中对齐           |
+| <cmd> + 1/2/5             | 对应段落1，2，1.5倍行距     |
+
 ### Ranger
 
 由python编写的文件预览程序。通过`brew install ranger`安装。在终端使用`ranger`启动。该程序是支持一个`highlight`的程序的。（不清楚是不是一个程序）同样通过homebrew安装。安装后ranger会自动加载它，为文本文件添加高亮。同时，fzf这样的插件也会自动使用这个程序。
