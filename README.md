@@ -61,7 +61,7 @@ $ ./xxx.sh
 
 #### tmux
 
-```
+```shell
 # create a session
 tmux new -s sessionName
 
@@ -91,7 +91,7 @@ ctrl+b $
 
 通过插件`tmux-resurrent`能够将会话保存到本地，将该github项目克隆到`~/.tmux`下，在配置文件`~/.tmux.conf`中添加如下配置。
 
-```
+```script
 run-shell ~/.tmux/tmux-resurrect/resurrect.tmux
 
 # prefix <c-s> store session
@@ -200,7 +200,7 @@ alias mysql='/usr/local/mysql/bin/mysql'
 
 vim中一些临时存放复制内容的地方。存在多个不同类型的寄存器。
 
-```
+```script
 1. The unnamed register ""
 2. 10 numbered registers "0 to "9
 3. The small delete register "-
@@ -215,7 +215,7 @@ vim中一些临时存放复制内容的地方。存在多个不同类型的寄�
 
 对于寄存器的内容会有三个类别：
 
-```
+```script
 "c"     for characterwise text
 "l"     for linewise text
 "b"     for blockwise-visual text
@@ -485,7 +485,7 @@ extension-pkg-whitelist=lxml
 
 修改文件权限的命令，对于类linux系统而言，将权限划分成三个成分，所有者(owner)，组成员(group)，其他(others)。对文件的操作分为读(r)、写(w)、执行(x)。通过 `ls -l` 命令可以查看文件权限信息。
 
-<img src="img/fig1.png" style="zoom:50%;" />
+![chmod](./img/fig1.png)
 
 第一个字符用来区分文件与文件夹，`-`表示文件，`d`表示文件夹。接下来三个字符为一组，分别表示所有者，组成员，其他成员对该文件的操作权限。没有对应的权限时用短横线表示。第二列表示文件的硬连接数量，第三列表示文件所有者，第四列为所有者的所属组，第五列为文件大小，第六，七，八列是最后修改时间。
 

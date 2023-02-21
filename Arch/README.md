@@ -129,7 +129,7 @@ $ pacman -S pacman-mirrorlist
 
 编辑`/etc/pacman.conf`
 
-```
+```script
 # 在文件末尾添加下面两条
 
 [archlinuxcn]
